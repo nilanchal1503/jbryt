@@ -137,7 +137,7 @@ async def send_chat_message(
         updated_session = await db.chat_sessions.find_one({
             "user_id": current_user.id,
             "session_id": session_id
-        })
+        }, {"_id": 0})
         
         messages = [ChatMessage(**msg) for msg in updated_session["messages"]]
         
