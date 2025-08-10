@@ -73,7 +73,9 @@ async def login_user(login_data: UserLogin, db: AsyncIOMotorDatabase = Depends(g
                 detail="Invalid email or password"
             )
         
+        print(f"Found user: {user_doc.get('email')}")
         user = User(**user_doc)
+        print(f"Created user object: {user.id}")
         
         # Verify password
         if not verify_password(login_data.password, user_doc["password"]):
@@ -82,11 +84,15 @@ async def login_user(login_data: UserLogin, db: AsyncIOMotorDatabase = Depends(g
                 detail="Invalid email or password"
             )
         
+        print("Password verified successfully")
+        
         # Create access token
         access_token_expires = timedelta(minutes=int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 30)))
         access_token = create_access_token(
             data={"sub": user.id}, expires_delta=access_token_expires
         )
+        
+        print("Access token created")
         
         return {
             "access_token": access_token,
@@ -106,6 +112,7 @@ async def login_user(login_data: UserLogin, db: AsyncIOMotorDatabase = Depends(g
     except HTTPException:
         raise
     except Exception as e:
+        print(f"Login error: {str(e)}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Login failed"
