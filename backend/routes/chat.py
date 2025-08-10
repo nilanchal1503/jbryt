@@ -18,26 +18,36 @@ async def get_database():
 # Initialize AI chat
 EMERGENT_LLM_KEY = os.getenv("EMERGENT_LLM_KEY")
 
-ORION_SYSTEM_MESSAGE = """You are Orion, an expert AI career assistant at JobRight, the leading AI-powered job search platform. Your mission is to help job seekers accelerate their careers with personalized guidance.
+STACK_BOT_SYSTEM_MESSAGE = """You are Stack-Bot, an expert AI career copilot at Stack-Finds, the leading AI-powered tech job search platform for developers. Your mission is to help software engineers, developers, and tech professionals accelerate their careers with personalized guidance.
 
 Your expertise includes:
-- Job search strategy and optimization
-- Resume writing and ATS optimization
-- Interview preparation and practice
-- Salary negotiation tactics
-- Career path planning
-- Company research and insights
-- Networking strategies
-- LinkedIn optimization
+- Tech job search strategies and stack-specific matching
+- Resume optimization for developers and ATS systems
+- Coding interview preparation and technical assessments
+- System design interview coaching
+- Salary negotiation tactics for tech roles
+- Career progression paths in technology
+- Tech stack recommendations and learning paths
+- Company culture insights and engineering practices
+- Open source contribution guidance
+- Networking strategies for developers
 
 Your personality:
 - Professional yet friendly and approachable
-- Encouraging and motivational
-- Data-driven with practical advice
-- Concise but thorough in explanations
-- Proactive in suggesting next steps
+- Tech-savvy with deep understanding of developer challenges
+- Encouraging and motivational about career growth
+- Data-driven with practical, actionable advice
+- Concise but thorough in technical explanations
+- Proactive in suggesting next steps and resources
 
-Always provide actionable advice and ask follow-up questions to better understand the user's career goals. Keep responses conversational and under 200 words unless detailed explanations are specifically requested."""
+Focus areas:
+- Always consider the user's tech stack and experience level
+- Provide specific, actionable advice for developers
+- Reference current market trends and salary data when relevant
+- Suggest relevant technologies and skills to learn
+- Help with both technical and soft skills development
+
+Always provide actionable advice and ask follow-up questions to better understand the user's career goals, preferred technologies, and experience level. Keep responses conversational and under 200 words unless detailed technical explanations are specifically requested."""
 
 async def get_ai_response(user_message: str, session_id: str, user_context: dict = None) -> str:
     """Get AI response from Emergent LLM"""
@@ -46,13 +56,13 @@ async def get_ai_response(user_message: str, session_id: str, user_context: dict
         chat = LlmChat(
             api_key=EMERGENT_LLM_KEY,
             session_id=session_id,
-            system_message=ORION_SYSTEM_MESSAGE
+            system_message=STACK_BOT_SYSTEM_MESSAGE
         ).with_model("openai", "gpt-4o-mini")
         
         # Add user context to the message if available
         enhanced_message = user_message
         if user_context:
-            context_info = f"User context: {user_context.get('name', 'User')} is a {user_context.get('title', 'professional')} in {user_context.get('location', 'their location')}. "
+            context_info = f"User context: {user_context.get('name', 'Developer')} is a {user_context.get('title', 'software developer')} in {user_context.get('location', 'their location')}. "
             enhanced_message = context_info + user_message
         
         # Create user message
@@ -64,7 +74,7 @@ async def get_ai_response(user_message: str, session_id: str, user_context: dict
         
     except Exception as e:
         print(f"AI response error: {str(e)}")
-        return "I'm sorry, I'm having trouble processing your request right now. Please try again in a moment."
+        return "I'm sorry, I'm having trouble processing your request right now. Please try again in a moment, or feel free to ask me about tech careers, job search strategies, or interview preparation! 🚀"
 
 @router.post("/message", response_model=ChatResponse)
 async def send_chat_message(
@@ -72,7 +82,7 @@ async def send_chat_message(
     db: AsyncIOMotorDatabase = Depends(get_database),
     current_user: UserResponse = Depends(get_current_user)
 ):
-    """Send a message to Orion AI and get response"""
+    """Send a message to Stack-Bot AI and get response"""
     try:
         # Generate session ID if not provided
         session_id = message_data.session_id or str(uuid.uuid4())

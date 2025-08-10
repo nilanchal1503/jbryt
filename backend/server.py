@@ -19,12 +19,18 @@ load_dotenv(ROOT_DIR / '.env')
 
 # MongoDB connection
 mongo_url = os.environ['MONGO_URL'].strip('"')
-db_name = os.environ['DB_NAME'].strip('"')
+db_name = os.environ.get('DB_NAME', 'stackfinds_db').strip('"')
 client = AsyncIOMotorClient(mongo_url)
 db = client[db_name]
 
 # Create the main app without a prefix
-app = FastAPI(title="JobRight API", description="AI-Powered Job Search Platform", version="1.0.0")
+app = FastAPI(
+    title="Stack-Finds API", 
+    description="AI-Powered Tech Job Search Platform for Developers", 
+    version="2.0.0",
+    docs_url="/docs",
+    redoc_url="/redoc"
+)
 
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
@@ -41,7 +47,18 @@ class StatusCheckCreate(BaseModel):
 # Add original routes
 @api_router.get("/")
 async def root():
-    return {"message": "JobRight API - AI-Powered Job Search Platform"}
+    return {
+        "message": "Stack-Finds API - AI-Powered Tech Job Search Platform",
+        "version": "2.0.0",
+        "platform": "For Developers, By Developers",
+        "features": [
+            "AI-Powered Job Matching",
+            "Smart Resume Analysis",
+            "Tech Stack Recommendations",
+            "AI Interview Preparation",
+            "Career Progression Insights"
+        ]
+    }
 
 @api_router.post("/status", response_model=StatusCheck)
 async def create_status_check(input: StatusCheckCreate):
@@ -54,6 +71,16 @@ async def create_status_check(input: StatusCheckCreate):
 async def get_status_checks():
     status_checks = await db.status_checks.find().to_list(1000)
     return [StatusCheck(**status_check) for status_check in status_checks]
+
+# Health check endpoint
+@api_router.get("/health")
+async def health_check():
+    return {
+        "status": "healthy",
+        "service": "Stack-Finds API",
+        "version": "2.0.0",
+        "database": "connected" if client else "disconnected"
+    }
 
 # Include all route modules
 api_router.include_router(auth.router)
@@ -84,7 +111,8 @@ logger = logging.getLogger(__name__)
 async def startup_event():
     """Initialize database and seed data"""
     await seed_database(db)
-    logger.info("✅ JobRight API started successfully")
+    logger.info("🚀 Stack-Finds API started successfully")
+    logger.info("🔍 AI-Powered Tech Job Search Platform Ready")
 
 @app.on_event("shutdown")
 async def shutdown_db_client():
