@@ -133,7 +133,7 @@ async def update_user_profile(
             )
         
         # Return updated user
-        updated_user = await db.users.find_one({"id": current_user.id})
+        updated_user = await db.users.find_one({"id": current_user.id}, {"_id": 0})
         user = User(**updated_user)
         
         return UserResponse(
