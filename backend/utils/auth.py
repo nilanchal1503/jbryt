@@ -55,10 +55,11 @@ def verify_token(token: str) -> dict:
         )
 
 async def get_current_user(
-    credentials: HTTPAuthorizationCredentials = Depends(security),
-    db: AsyncIOMotorDatabase = None
+    credentials: HTTPAuthorizationCredentials = Depends(security)
 ) -> UserResponse:
     """Get current authenticated user"""
+    from server import db
+    
     try:
         payload = verify_token(credentials.credentials)
         user_id = payload.get("sub")
