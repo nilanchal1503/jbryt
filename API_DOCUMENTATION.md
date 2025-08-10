@@ -2,7 +2,7 @@
 
 ## Base URL
 ```
-https://b9debc4a-5fc0-43b5-bf12-fdfbd73ef363.preview.emergentagent.com/api
+https://f66d6164-d00a-4cab-b713-719e9aa835f3.preview.emergentagent.com/api
 ```
 
 ## Authentication
@@ -387,7 +387,7 @@ GET /jobs?search=react&location=San Francisco&job_type=Full Time&limit=10
 
 ### 1. Register a new developer:
 ```bash
-curl -X POST "https://b9debc4a-5fc0-43b5-bf12-fdfbd73ef363.preview.emergentagent.com/api/auth/register" \
+curl -X POST "https://f66d6164-d00a-4cab-b713-719e9aa835f3.preview.emergentagent.com/api/auth/register" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Test Developer",
@@ -398,18 +398,18 @@ curl -X POST "https://b9debc4a-5fc0-43b5-bf12-fdfbd73ef363.preview.emergentagent
 
 ### 2. Get tech job listings:
 ```bash
-curl "https://b9debc4a-5fc0-43b5-bf12-fdfbd73ef363.preview.emergentagent.com/api/jobs?search=react&limit=5"
+curl "https://f66d6164-d00a-4cab-b713-719e9aa835f3.preview.emergentagent.com/api/jobs?search=react&limit=5"
 ```
 
 ### 3. Get developer profile (with token):
 ```bash
-curl "https://b9debc4a-5fc0-43b5-bf12-fdfbd73ef363.preview.emergentagent.com/api/auth/me" \
+curl "https://f66d6164-d00a-4cab-b713-719e9aa835f3.preview.emergentagent.com/api/auth/me" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"
 ```
 
 ### 4. Send message to Stack-Bot:
 ```bash
-curl -X POST "https://b9debc4a-5fc0-43b5-bf12-fdfbd73ef363.preview.emergentagent.com/api/chat/message" \
+curl -X POST "https://f66d6164-d00a-4cab-b713-719e9aa835f3.preview.emergentagent.com/api/chat/message" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
