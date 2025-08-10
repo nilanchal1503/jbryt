@@ -342,12 +342,9 @@ def test_job_application():
         print_test_result("Job Application - Prerequisites", False, "Missing auth token or job ID")
         return False
     
-    application_data = {
-        "notes": "I'm very interested in this position and believe my skills align well with the requirements."
-    }
-    
+    # No request body needed - job_id comes from URL path
     headers = {"Authorization": f"Bearer {auth_token}"}
-    response, error = make_request("POST", f"/jobs/{test_job_id}/apply", application_data, headers)
+    response, error = make_request("POST", f"/jobs/{test_job_id}/apply", None, headers)
     
     if error:
         print_test_result("Job Application - Connection", False, f"Connection error: {error}")
