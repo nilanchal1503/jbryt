@@ -63,7 +63,7 @@ async def get_jobs(
             query["level"] = {"$regex": experience, "$options": "i"}
         
         # Get jobs from database
-        cursor = db.jobs.find(query).sort("posted_at", -1).skip(skip).limit(limit)
+        cursor = db.jobs.find(query, {"_id": 0}).sort("posted_at", -1).skip(skip).limit(limit)
         jobs = await cursor.to_list(length=limit)
         
         # Convert to response format
