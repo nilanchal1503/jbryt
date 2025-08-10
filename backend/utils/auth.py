@@ -70,7 +70,7 @@ async def get_current_user(
             )
         
         # Get user from database
-        user_doc = await db.users.find_one({"id": user_id})
+        user_doc = await db.users.find_one({"id": user_id}, {"_id": 0})
         if user_doc is None:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
