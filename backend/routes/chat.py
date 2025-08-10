@@ -81,7 +81,7 @@ async def send_chat_message(
         chat_session = await db.chat_sessions.find_one({
             "user_id": current_user.id,
             "session_id": session_id
-        })
+        }, {"_id": 0})
         
         if not chat_session:
             # Create new session
