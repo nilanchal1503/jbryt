@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException, status, Depends
 from motor.motor_asyncio import AsyncIOMotorDatabase
 from models.user import User, UserCreate, UserLogin, UserUpdate, UserResponse
 from utils.auth import hash_password, verify_password, create_access_token, get_current_user
-from datetime import timedelta
+from datetime import datetime, timedelta
 import os
 
 router = APIRouter(prefix="/auth", tags=["authentication"])
