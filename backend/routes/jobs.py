@@ -163,7 +163,7 @@ async def apply_to_job(
         application = Application(
             user_id=current_user.id,
             job_id=job_id,
-            notes=application_data.notes
+            notes="Applied via JobRight platform"
         )
         
         await db.applications.insert_one(application.dict())
