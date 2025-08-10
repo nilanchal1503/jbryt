@@ -165,7 +165,7 @@ async def get_chat_history(
         chat_session = await db.chat_sessions.find_one({
             "user_id": current_user.id,
             "session_id": session_id
-        })
+        }, {"_id": 0})
         
         if not chat_session:
             # Return empty session
