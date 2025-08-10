@@ -11,51 +11,56 @@ import {
   Clock,
   Zap,
   Shield,
-  TrendingUp
+  TrendingUp,
+  Code2,
+  Rocket,
+  Search,
+  Bot,
+  Sparkles
 } from "lucide-react";
 
 const FeaturesSection = () => {
   const features = [
     {
-      icon: <Brain className="w-8 h-8 text-purple-600" />,
-      title: "AI-Powered Job Matching",
-      description: "Our advanced AI analyzes your skills, experience, and preferences to find the perfect job matches in real-time.",
-      bgColor: "bg-purple-50",
-      borderColor: "border-purple-200"
+      icon: <Brain className="w-8 h-8 text-violet-600" />,
+      title: "AI-Powered Tech Matching",
+      description: "Our advanced AI analyzes your tech stack, coding skills, and preferences to find perfect developer job matches in real-time.",
+      bgColor: "bg-gradient-to-br from-violet-50 to-purple-50",
+      borderColor: "border-violet-200"
     },
     {
-      icon: <FileText className="w-8 h-8 text-blue-600" />,
-      title: "Resume Optimization",
-      description: "Get ATS-friendly resumes tailored for each application with AI-powered suggestions and industry insights.",
-      bgColor: "bg-blue-50",
+      icon: <Code2 className="w-8 h-8 text-blue-600" />,
+      title: "Stack-Specific Resume",
+      description: "Generate ATS-friendly resumes optimized for your tech stack with AI-powered suggestions and industry best practices.",
+      bgColor: "bg-gradient-to-br from-blue-50 to-violet-50",
       borderColor: "border-blue-200"
     },
     {
-      icon: <MessageSquare className="w-8 h-8 text-emerald-600" />,
-      title: "Interview Preparation",
-      description: "Practice with AI-powered mock interviews and get personalized feedback to ace your next interview.",
-      bgColor: "bg-emerald-50",
+      icon: <Bot className="w-8 h-8 text-emerald-600" />,
+      title: "AI Interview Coach",
+      description: "Practice coding interviews and system design with our AI coach. Get personalized feedback for top tech companies.",
+      bgColor: "bg-gradient-to-br from-emerald-50 to-teal-50",
       borderColor: "border-emerald-200"
     },
     {
-      icon: <Target className="w-8 h-8 text-red-600" />,
-      title: "Company Insights",
-      description: "Get detailed company information, culture insights, and insider tips to make informed decisions.",
-      bgColor: "bg-red-50",
-      borderColor: "border-red-200"
+      icon: <Search className="w-8 h-8 text-pink-600" />,
+      title: "Company Deep Dive",
+      description: "Get insider insights into tech culture, stack details, salary ranges, and engineering practices at target companies.",
+      bgColor: "bg-gradient-to-br from-pink-50 to-rose-50",
+      borderColor: "border-pink-200"
     },
     {
       icon: <Users className="w-8 h-8 text-indigo-600" />,
-      title: "Networking Assistant",
-      description: "Find and connect with relevant professionals in your target companies through intelligent networking.",
-      bgColor: "bg-indigo-50",
+      title: "Developer Network",
+      description: "Connect with senior engineers and tech leads at your target companies through intelligent networking recommendations.",
+      bgColor: "bg-gradient-to-br from-indigo-50 to-blue-50",
       borderColor: "border-indigo-200"
     },
     {
-      icon: <Clock className="w-8 h-8 text-orange-600" />,
-      title: "24/7 Career Support",
-      description: "Get instant career advice and job search guidance from Orion AI whenever you need it.",
-      bgColor: "bg-orange-50",
+      icon: <Rocket className="w-8 h-8 text-orange-600" />,
+      title: "24/7 Career Copilot",
+      description: "Get instant tech career guidance, salary insights, and job search strategies from our specialized AI assistant.",
+      bgColor: "bg-gradient-to-br from-orange-50 to-yellow-50",
       borderColor: "border-orange-200"
     }
   ];
@@ -63,50 +68,54 @@ const FeaturesSection = () => {
   const benefits = [
     {
       icon: <Zap className="w-6 h-6 text-yellow-500" />,
-      title: "10x Faster Applications",
-      description: "Apply to more jobs in less time with automated application tracking and management."
+      title: "10x Faster Job Discovery",
+      description: "Find relevant tech positions instantly with AI-powered filtering and smart recommendations."
     },
     {
       icon: <Shield className="w-6 h-6 text-green-500" />,
-      title: "Privacy Protected",
-      description: "Your data is secure and only shared with companies you choose to apply to."
+      title: "Privacy-First Approach",
+      description: "Your coding projects and personal data are secure. Share only what you choose with employers."
     },
     {
-      icon: <TrendingUp className="w-6 h-6 text-blue-500" />,
+      icon: <TrendingUp className="w-6 h-6 text-violet-500" />,
       title: "Higher Success Rate",
-      description: "Users report 3x more interviews and 5x better job match relevance."
+      description: "Developers report 5x more interviews and 8x better job match relevance with our platform."
     }
   ];
 
   return (
-    <div className="py-20 bg-white">
+    <div className="py-24 bg-gradient-to-b from-white to-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Features */}
-        <div className="text-center mb-16">
-          <Badge className="bg-emerald-100 text-emerald-700 mb-4">
+        <div className="text-center mb-20">
+          <Badge className="bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700 mb-6 px-4 py-2 border border-violet-200">
+            <Sparkles className="w-4 h-4 mr-2" />
             Powered by Advanced AI
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Everything You Need to Land Your Dream Job
+          <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-8 brand-font">
+            Everything Developers Need to 
+            <br />
+            <span className="gradient-text">Land Dream Jobs</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            From intelligent job matching to interview preparation, our AI copilot guides you through every step of your career journey.
+          <p className="text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+            From intelligent tech job matching to coding interview preparation, 
+            our AI copilot guides you through every step of your developer career journey.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {features.map((feature, index) => (
-            <Card key={index} className={`${feature.bgColor} ${feature.borderColor} border-2 hover:shadow-xl transition-all duration-300 hover:scale-105 transform`}>
+            <Card key={index} className={`${feature.bgColor} ${feature.borderColor} border-2 hover:shadow-2xl transition-all duration-500 hover:scale-105 transform card-hover group cursor-pointer`}>
               <CardHeader className="pb-4">
-                <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+                <div className="w-16 h-16 bg-white/80 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300 border border-white/50">
                   {feature.icon}
                 </div>
-                <CardTitle className="text-xl font-bold text-gray-900">
+                <CardTitle className="text-xl font-bold text-slate-900 group-hover:text-violet-600 transition-colors">
                   {feature.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-slate-700 leading-relaxed">
                   {feature.description}
                 </p>
               </CardContent>
@@ -114,31 +123,50 @@ const FeaturesSection = () => {
           ))}
         </div>
 
-        {/* Benefits Grid */}
-        <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-3xl p-12 text-white">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold mb-4">Why Choose Jobright?</h3>
-            <p className="text-gray-300 text-lg">
-              Join the revolution in job searching with AI-powered career assistance
-            </p>
-          </div>
+        {/* Benefits Section */}
+        <div className="relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-violet-900 to-purple-900 rounded-3xl"></div>
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239333ea" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] rounded-3xl"></div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="text-center">
-                <div className="w-12 h-12 bg-white bg-opacity-10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  {benefit.icon}
+          <div className="relative z-10 p-12 lg:p-16 text-white rounded-3xl">
+            <div className="text-center mb-12">
+              <Badge className="glass-dark border-violet-300/30 text-violet-200 mb-6 px-4 py-2">
+                <Code2 className="w-4 h-4 mr-2" />
+                Why Stack-Finds?
+              </Badge>
+              <h3 className="text-4xl md:text-5xl font-bold mb-6 brand-font">
+                Built by Developers,
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-pink-400">
+                  For Developers
+                </span>
+              </h3>
+              <p className="text-violet-100 text-xl max-w-3xl mx-auto leading-relaxed">
+                Join thousands of developers who've revolutionized their job search with AI-powered career assistance
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              {benefits.map((benefit, index) => (
+                <div key={index} className="text-center group">
+                  <div className="w-16 h-16 glass-dark rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 border border-violet-400/20">
+                    {benefit.icon}
+                  </div>
+                  <h4 className="text-2xl font-bold mb-4 text-violet-100">{benefit.title}</h4>
+                  <p className="text-violet-200 leading-relaxed text-lg">{benefit.description}</p>
                 </div>
-                <h4 className="text-xl font-semibold mb-3">{benefit.title}</h4>
-                <p className="text-gray-300 leading-relaxed">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          <div className="text-center mt-12">
-            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
-              Start Your AI-Powered Job Search
-            </Button>
+            <div className="text-center">
+              <Button className="btn-gradient text-white px-10 py-5 rounded-2xl text-lg font-semibold shadow-2xl hover:shadow-violet-500/25 transition-all duration-300 hover:scale-105">
+                <span className="relative z-10 flex items-center space-x-2">
+                  <Rocket className="w-5 h-5" />
+                  <span>Start Your Developer Journey</span>
+                  <Sparkles className="w-5 h-5" />
+                </span>
+              </Button>
+            </div>
           </div>
         </div>
       </div>

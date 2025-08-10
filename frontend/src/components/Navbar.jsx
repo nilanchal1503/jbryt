@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X, Code2, Zap } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,45 +23,75 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+    <nav className="bg-white/80 backdrop-blur-xl border-b border-violet-100/50 sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-18">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">J</span>
+          <Link to="/" className="flex items-center space-x-3 group">
+            <div className="relative">
+              <div className="w-10 h-10 bg-gradient-to-br from-violet-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                <Code2 className="text-white font-bold text-lg w-5 h-5" />
+              </div>
+              <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
+                <Zap className="w-2.5 h-2.5 text-white" />
+              </div>
             </div>
-            <span className="text-xl font-bold text-gray-900">Jobright</span>
+            <div className="flex flex-col">
+              <span className="text-2xl font-bold brand-font gradient-text-purple">
+                Stack-Finds
+              </span>
+              <span className="text-xs text-violet-600 font-medium -mt-1">
+                AI-Powered Tech Jobs
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center space-x-1 text-gray-700 hover:text-emerald-600 transition-colors">
+              <DropdownMenuTrigger className="flex items-center space-x-1 text-slate-700 hover:text-violet-600 transition-colors font-medium">
                 <span>Features</span>
                 <ChevronDown className="w-4 h-4" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem>
-                  <Link to="/jobs" className="w-full">Job Search</Link>
+              <DropdownMenuContent className="mt-2 glass rounded-xl border-violet-200">
+                <DropdownMenuItem className="hover:bg-violet-50">
+                  <Link to="/jobs" className="w-full flex items-center space-x-2">
+                    <Code2 className="w-4 h-4 text-violet-500" />
+                    <span>Smart Job Search</span>
+                  </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem>Resume Optimizer</DropdownMenuItem>
-                <DropdownMenuItem>Interview Prep</DropdownMenuItem>
-                <DropdownMenuItem>Career Insights</DropdownMenuItem>
+                <DropdownMenuItem className="hover:bg-violet-50">
+                  <div className="flex items-center space-x-2">
+                    <Zap className="w-4 h-4 text-violet-500" />
+                    <span>AI Resume Builder</span>
+                  </div>
+                </DropdownMenuItem>
+                <DropdownMenuItem className="hover:bg-violet-50">
+                  <div className="flex items-center space-x-2">
+                    <Code2 className="w-4 h-4 text-violet-500" />
+                    <span>Tech Interview Prep</span>
+                  </div>
+                </DropdownMenuItem>
+                <DropdownMenuItem className="hover:bg-violet-50">
+                  <div className="flex items-center space-x-2">
+                    <Zap className="w-4 h-4 text-violet-500" />
+                    <span>Stack Insights</span>
+                  </div>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <Link to="/ai-agent" className="text-gray-700 hover:text-emerald-600 transition-colors">
-              AI Agent
+            <Link to="/ai-agent" className="text-slate-700 hover:text-violet-600 transition-colors font-medium">
+              AI Copilot
             </Link>
-            <Link to="/resume-ai" className="text-gray-700 hover:text-emerald-600 transition-colors">
-              Resume AI
+            <Link to="/stack-analyzer" className="text-slate-700 hover:text-violet-600 transition-colors font-medium">
+              Stack Analyzer
             </Link>
-            <Link to="/about" className="text-gray-700 hover:text-emerald-600 transition-colors">
-              About Us
+            <Link to="/about" className="text-slate-700 hover:text-violet-600 transition-colors font-medium">
+              About
             </Link>
-            <Link to="/blog" className="text-gray-700 hover:text-emerald-600 transition-colors">
-              Blog
+            <Link to="/blog" className="text-slate-700 hover:text-violet-600 transition-colors font-medium">
+              Tech Blog
             </Link>
           </div>
 
@@ -70,15 +100,15 @@ const Navbar = () => {
             <Button 
               variant="ghost" 
               onClick={handleSignIn}
-              className="text-gray-700 hover:text-emerald-600"
+              className="text-slate-700 hover:text-violet-600 hover:bg-violet-50 font-medium"
             >
               SIGN IN
             </Button>
             <Button 
               onClick={handleJoinNow}
-              className="bg-black text-white hover:bg-gray-800 rounded-lg px-6"
+              className="btn-gradient text-white hover:shadow-lg rounded-xl px-6 py-2.5 font-medium transform hover:scale-105 transition-all duration-200"
             >
-              JOIN NOW
+              <span className="relative z-10">JOIN NOW</span>
             </Button>
           </div>
 
@@ -88,6 +118,7 @@ const Navbar = () => {
               variant="ghost"
               size="sm"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="text-violet-600"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </Button>
@@ -96,29 +127,29 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-100">
+          <div className="md:hidden py-4 border-t border-violet-100">
             <div className="flex flex-col space-y-4">
-              <Link to="/jobs" className="text-gray-700 hover:text-emerald-600 transition-colors">
-                Features
+              <Link to="/jobs" className="text-slate-700 hover:text-violet-600 transition-colors font-medium">
+                Smart Job Search
               </Link>
-              <Link to="/ai-agent" className="text-gray-700 hover:text-emerald-600 transition-colors">
-                AI Agent
+              <Link to="/ai-agent" className="text-slate-700 hover:text-violet-600 transition-colors font-medium">
+                AI Copilot
               </Link>
-              <Link to="/resume-ai" className="text-gray-700 hover:text-emerald-600 transition-colors">
-                Resume AI
+              <Link to="/stack-analyzer" className="text-slate-700 hover:text-violet-600 transition-colors font-medium">
+                Stack Analyzer
               </Link>
-              <Link to="/about" className="text-gray-700 hover:text-emerald-600 transition-colors">
-                About Us
+              <Link to="/about" className="text-slate-700 hover:text-violet-600 transition-colors font-medium">
+                About
               </Link>
-              <Link to="/blog" className="text-gray-700 hover:text-emerald-600 transition-colors">
-                Blog
+              <Link to="/blog" className="text-slate-700 hover:text-violet-600 transition-colors font-medium">
+                Tech Blog
               </Link>
-              <div className="flex flex-col space-y-2 pt-4 border-t border-gray-100">
-                <Button variant="ghost" onClick={handleSignIn}>
+              <div className="flex flex-col space-y-3 pt-4 border-t border-violet-100">
+                <Button variant="ghost" onClick={handleSignIn} className="justify-start">
                   SIGN IN
                 </Button>
-                <Button onClick={handleJoinNow} className="bg-black text-white hover:bg-gray-800">
-                  JOIN NOW
+                <Button onClick={handleJoinNow} className="btn-gradient text-white justify-start">
+                  <span className="relative z-10">JOIN NOW</span>
                 </Button>
               </div>
             </div>
