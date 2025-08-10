@@ -99,7 +99,7 @@ async def get_jobs(
 async def get_job_details(job_id: str, db: AsyncIOMotorDatabase = Depends(get_database)):
     """Get specific job details"""
     try:
-        job_doc = await db.jobs.find_one({"id": job_id})
+        job_doc = await db.jobs.find_one({"id": job_id}, {"_id": 0})
         if not job_doc:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
