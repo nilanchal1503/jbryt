@@ -21,13 +21,13 @@ async def get_user_applications(
     """Get user's job applications"""
     try:
         # Get applications
-        applications = await db.applications.find({"user_id": current_user.id}).sort("applied_at", -1).to_list(100)
+        applications = await db.applications.find({"user_id": current_user.id}, {"_id": 0}).sort("applied_at", -1).to_list(100)
         
         # Populate with job details
         application_responses = []
         for app_doc in applications:
             # Get job details
-            job_doc = await db.jobs.find_one({"id": app_doc["job_id"]})
+            job_doc = await db.jobs.find_one({"id": app_doc["job_id"]}, {"_id": 0})
             
             application_response = ApplicationResponse(
                 id=app_doc["id"],
