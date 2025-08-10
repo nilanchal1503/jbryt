@@ -55,12 +55,12 @@ async def get_saved_jobs(
     """Get user's saved jobs"""
     try:
         # Get saved jobs
-        saved_jobs = await db.saved_jobs.find({"user_id": current_user.id}).sort("saved_at", -1).to_list(100)
+        saved_jobs = await db.saved_jobs.find({"user_id": current_user.id}, {"_id": 0}).sort("saved_at", -1).to_list(100)
         
         # Populate with job details
         saved_job_responses = []
         for saved_job in saved_jobs:
-            job_doc = await db.jobs.find_one({"id": saved_job["job_id"]})
+            job_doc = await db.jobs.find_one({"id": saved_job["job_id"]}, {"_id": 0})
             if job_doc:
                 saved_job_responses.append({
                     "saved_at": saved_job["saved_at"],
