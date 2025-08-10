@@ -31,6 +31,7 @@ class User(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     name: str
     email: EmailStr
+    password: str  # Hashed password
     title: Optional[str] = None
     location: Optional[str] = None
     avatar: Optional[str] = None
