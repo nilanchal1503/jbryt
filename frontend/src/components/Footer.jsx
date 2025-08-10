@@ -1,126 +1,197 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
-import { 
-  Twitter, 
-  Linkedin, 
-  Github, 
-  Mail,
-  MapPin,
-  Phone,
-  Sparkles
-} from "lucide-react";
+import { Code2, Zap, Github, Twitter, Linkedin, Mail, Heart } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const footerSections = [
+    {
+      title: "Platform",
+      links: [
+        { name: "Smart Job Search", href: "/jobs" },
+        { name: "AI Copilot", href: "/ai-agent" },
+        { name: "Stack Analyzer", href: "/stack-analyzer" },
+        { name: "Resume Builder", href: "/resume-ai" },
+        { name: "Interview Prep", href: "/interview-prep" }
+      ]
+    },
+    {
+      title: "For Developers",
+      links: [
+        { name: "Frontend Jobs", href: "/jobs?stack=frontend" },
+        { name: "Backend Jobs", href: "/jobs?stack=backend" },
+        { name: "Full Stack Jobs", href: "/jobs?stack=fullstack" },
+        { name: "DevOps Jobs", href: "/jobs?stack=devops" },
+        { name: "Mobile Jobs", href: "/jobs?stack=mobile" }
+      ]
+    },
+    {
+      title: "Company",
+      links: [
+        { name: "About Stack-Finds", href: "/about" },
+        { name: "Tech Blog", href: "/blog" },
+        { name: "Success Stories", href: "/success-stories" },
+        { name: "Careers", href: "/careers" },
+        { name: "Press Kit", href: "/press" }
+      ]
+    },
+    {
+      title: "Support",
+      links: [
+        { name: "Help Center", href: "/help" },
+        { name: "Developer API", href: "/api-docs" },
+        { name: "Community", href: "/community" },
+        { name: "Contact Us", href: "/contact" },
+        { name: "Status Page", href: "/status" }
+      ]
+    }
+  ];
+
+  const socialLinks = [
+    { icon: <Github className="w-5 h-5" />, href: "#", label: "GitHub" },
+    { icon: <Twitter className="w-5 h-5" />, href: "#", label: "Twitter" },
+    { icon: <Linkedin className="w-5 h-5" />, href: "#", label: "LinkedIn" },
+    { icon: <Mail className="w-5 h-5" />, href: "#", label: "Email" }
+  ];
+
   return (
-    <footer className="bg-gray-900 text-white">
-      {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center">
-                <Sparkles className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-2xl font-bold">Jobright</span>
-            </div>
-            <p className="text-gray-300 mb-6 leading-relaxed">
-              The first AI-powered job search platform that hunts jobs for you. Transform your career with intelligent job matching and personalized guidance.
-            </p>
-            <div className="flex space-x-4">
-              <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white hover:bg-gray-800">
-                <Twitter className="w-5 h-5" />
-              </Button>
-              <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white hover:bg-gray-800">
-                <Linkedin className="w-5 h-5" />
-              </Button>
-              <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white hover:bg-gray-800">
-                <Github className="w-5 h-5" />
-              </Button>
-              <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white hover:bg-gray-800">
-                <Mail className="w-5 h-5" />
-              </Button>
-            </div>
-          </div>
-
-          {/* Product Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-6">Product</h3>
-            <ul className="space-y-3">
-              <li><Link to="/jobs" className="text-gray-300 hover:text-white transition-colors">Job Search</Link></li>
-              <li><Link to="/ai-agent" className="text-gray-300 hover:text-white transition-colors">AI Agent</Link></li>
-              <li><Link to="/resume-ai" className="text-gray-300 hover:text-white transition-colors">Resume AI</Link></li>
-              <li><Link to="/interview-prep" className="text-gray-300 hover:text-white transition-colors">Interview Prep</Link></li>
-              <li><Link to="/career-insights" className="text-gray-300 hover:text-white transition-colors">Career Insights</Link></li>
-              <li><Link to="/networking" className="text-gray-300 hover:text-white transition-colors">Networking</Link></li>
-            </ul>
-          </div>
-
-          {/* Company Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-6">Company</h3>
-            <ul className="space-y-3">
-              <li><Link to="/about" className="text-gray-300 hover:text-white transition-colors">About Us</Link></li>
-              <li><Link to="/careers" className="text-gray-300 hover:text-white transition-colors">Careers</Link></li>
-              <li><Link to="/blog" className="text-gray-300 hover:text-white transition-colors">Blog</Link></li>
-              <li><Link to="/press" className="text-gray-300 hover:text-white transition-colors">Press</Link></li>
-              <li><Link to="/investors" className="text-gray-300 hover:text-white transition-colors">Investors</Link></li>
-            </ul>
-          </div>
-
-          {/* Support Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-6">Support</h3>
-            <ul className="space-y-3">
-              <li><Link to="/help" className="text-gray-300 hover:text-white transition-colors">Help Center</Link></li>
-              <li><Link to="/contact" className="text-gray-300 hover:text-white transition-colors">Contact Us</Link></li>
-              <li><Link to="/privacy" className="text-gray-300 hover:text-white transition-colors">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="text-gray-300 hover:text-white transition-colors">Terms of Service</Link></li>
-              <li><Link to="/cookies" className="text-gray-300 hover:text-white transition-colors">Cookie Policy</Link></li>
-            </ul>
-            
-            <div className="mt-8">
-              <h4 className="font-semibold mb-3 text-emerald-400">Contact Info</h4>
-              <div className="space-y-2 text-sm text-gray-300">
-                <div className="flex items-center space-x-2">
-                  <MapPin className="w-4 h-4" />
-                  <span>San Francisco, CA</span>
+    <footer className="bg-gradient-to-b from-slate-900 via-violet-900 to-purple-900 text-white relative overflow-hidden">
+      {/* Background pattern */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239333ea" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+      
+      <div className="relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+          {/* Top Section */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <div>
+              {/* Logo and Brand */}
+              <Link to="/" className="flex items-center space-x-4 mb-6 group">
+                <div className="relative">
+                  <div className="w-12 h-12 bg-gradient-to-br from-violet-400 via-purple-400 to-pink-400 rounded-2xl flex items-center justify-center shadow-xl group-hover:shadow-2xl transition-all duration-300 group-hover:scale-110">
+                    <Code2 className="text-white font-bold text-lg w-6 h-6" />
+                  </div>
+                  <div className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
+                    <Zap className="w-3 h-3 text-white" />
+                  </div>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <Mail className="w-4 h-4" />
-                  <span>support@jobright.ai</span>
+                <div className="flex flex-col">
+                  <span className="text-3xl font-bold brand-font text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-pink-400">
+                    Stack-Finds
+                  </span>
+                  <span className="text-violet-200 font-medium -mt-1">
+                    AI-Powered Tech Jobs
+                  </span>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <Phone className="w-4 h-4" />
-                  <span>+1 (555) 123-4567</span>
+              </Link>
+
+              <p className="text-violet-100 text-lg leading-relaxed mb-6 max-w-md">
+                Revolutionizing how developers find their perfect tech roles with AI-powered matching, 
+                personalized recommendations, and career guidance.
+              </p>
+
+              {/* Stats */}
+              <div className="flex space-x-8 mb-8">
+                <div>
+                  <p className="text-2xl font-bold text-white">25K+</p>
+                  <p className="text-violet-200 text-sm">Developers</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-white">500+</p>
+                  <p className="text-violet-200 text-sm">Companies</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-white">98%</p>
+                  <p className="text-violet-200 text-sm">Success Rate</p>
                 </div>
               </div>
+
+              {/* Social Links */}
+              <div className="flex space-x-4">
+                {socialLinks.map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.href}
+                    className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center hover:bg-white/20 transition-all duration-300 hover:scale-110 border border-white/10"
+                    aria-label={social.label}
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Newsletter Signup */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
+              <Badge className="glass-dark border-violet-300/30 text-violet-200 mb-4 px-3 py-1.5">
+                <Zap className="w-3 h-3 mr-1" />
+                Developer Newsletter
+              </Badge>
+              <h3 className="text-2xl font-bold text-white mb-4 brand-font">
+                Stay Ahead in Tech
+              </h3>
+              <p className="text-violet-100 mb-6 leading-relaxed">
+                Get weekly insights on tech trends, salary data, and exclusive job opportunities 
+                delivered to your inbox.
+              </p>
+              <div className="flex space-x-3">
+                <input
+                  type="email"
+                  placeholder="your.email@developer.com"
+                  className="flex-1 px-4 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl text-white placeholder-violet-200 focus:outline-none focus:border-violet-300"
+                />
+                <button className="bg-gradient-to-r from-violet-400 to-purple-400 text-white px-6 py-3 rounded-xl font-semibold hover:from-violet-500 hover:to-purple-500 transition-all duration-200 hover:scale-105 shadow-lg">
+                  Subscribe
+                </button>
+              </div>
+              <p className="text-violet-200 text-xs mt-3">
+                Join 10,000+ developers. Unsubscribe anytime.
+              </p>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">
-              © {currentYear} Jobright. All rights reserved.
-            </p>
-            <div className="flex items-center space-x-6 mt-4 md:mt-0">
-              <Badge className="bg-emerald-500 text-white">
-                🏆 Product Hunt #1
-              </Badge>
-              <Badge className="bg-blue-600 text-white">
-                🚀 OpenAI Top Pick
-              </Badge>
-              <span className="text-gray-400 text-sm">
-                Trusted by 520,000+ professionals
-              </span>
+          {/* Links Section */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+            {footerSections.map((section, index) => (
+              <div key={index}>
+                <h4 className="text-white font-bold text-lg mb-6 brand-font">
+                  {section.title}
+                </h4>
+                <ul className="space-y-3">
+                  {section.links.map((link, linkIndex) => (
+                    <li key={linkIndex}>
+                      <Link
+                        to={link.href}
+                        className="text-violet-200 hover:text-white transition-colors duration-200 hover:underline"
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom Section */}
+          <div className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div className="flex items-center space-x-6 text-violet-200 text-sm">
+              <Link to="/privacy" className="hover:text-white transition-colors">
+                Privacy Policy
+              </Link>
+              <Link to="/terms" className="hover:text-white transition-colors">
+                Terms of Service
+              </Link>
+              <Link to="/cookies" className="hover:text-white transition-colors">
+                Cookie Policy
+              </Link>
+            </div>
+
+            <div className="flex items-center space-x-2 text-violet-200">
+              <span>© {currentYear} Stack-Finds. Made with</span>
+              <Heart className="w-4 h-4 text-pink-400 fill-current" />
+              <span>for developers.</span>
             </div>
           </div>
         </div>
