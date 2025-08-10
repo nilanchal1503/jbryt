@@ -17,7 +17,7 @@ async def register_user(user_data: UserCreate, db: AsyncIOMotorDatabase = Depend
     """Register a new user"""
     try:
         # Check if user already exists
-        existing_user = await db.users.find_one({"email": user_data.email})
+        existing_user = await db.users.find_one({"email": user_data.email}, {"_id": 0})
         if existing_user:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
