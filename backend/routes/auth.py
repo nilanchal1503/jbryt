@@ -66,7 +66,7 @@ async def login_user(login_data: UserLogin, db: AsyncIOMotorDatabase = Depends(g
     """Login user"""
     try:
         # Find user by email
-        user_doc = await db.users.find_one({"email": login_data.email})
+        user_doc = await db.users.find_one({"email": login_data.email}, {"_id": 0})
         if not user_doc:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
